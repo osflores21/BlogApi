@@ -1,0 +1,33 @@
+###
+GET http://localhost:8000/api HTTP/1.1
+
+###
+
+GET http://localhost:8000/api/id HTTP/1.1
+
+
+###
+POST http://localhost:8000/api HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Test 6",
+    "autor":  "Oswaldo Flores Morales",
+    "dateCreate": "2024-01-02",
+    "content": "un escrito breve"
+}
+
+###
+DELETE  http://localhost:8000/api/2 HTTP/1.1
+
+###
+
+put http://localhost:8000/api/2 HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Test 2",
+    "autor":  "Oswaldo Flores Morales",
+    "dateCreate": "2024-01-02",
+    "content": "un escrito breve"
+}
