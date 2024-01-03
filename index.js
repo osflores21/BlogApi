@@ -1,5 +1,5 @@
 import express from 'express';
-import mysql from 'mysql2';
+import mysql from 'mysql';
 import mycon from 'express-myconnection';
 import routes from './routes.js';
 import cors from "cors";
