@@ -1,35 +1,38 @@
-const express  = require('express');
-const mysql = require('mysql2');
-const mycon = require('express-myconnection');
-const routes = require("./routes")
-const config = require("./config")
-const cors = require("cors");
+import express from 'express';
+import mysql from 'mysql2';
+import mycon from 'express-myconnection';
+import routes from './routes.js';
+import cors from "cors";
+import {
+    PORT, DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME
+} from './config.js';
+
 const app = express();
 app.disable('x-powered-by')
 app.use(cors());
 
 const dbOption = {
-    host: config.DB_HOST,
-    port: config.DB_PORT,
-    user: config.DB_USER,
-    password: config.DB_PASSWORD,
-    database: config.DB_NAME
+    host: DB_HOST,
+    port: DB_PORT,
+    user: DB_USER,
+    password: DB_PASSWORD,
+    database: DB_NAME
 }
-//Middlewares
 
+//Middlewares
 app.use(mycon(mysql, dbOption, 'single'))
 app.use(express.json());
 
 
 //Routes
-app.use('/api',routes)
+app.use('/api', routes)
 
 // In case that the url dont exits
-app.use((request,response) => {
+app.use((request, response) => {
     response.status(404).send("<h1>404</h1>")
 })
 
 //server running
-app.listen(app.get('port'), () =>{
-    console.log("server running on port", config.DB_PORT );
+app.listen(PORT, () => {
+    console.log("server running on port", PORT);
 })

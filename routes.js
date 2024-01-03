@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 
 const routes = express.Router();
 //Get all posts
@@ -67,4 +67,4 @@ routes.put('/:id', (request, response) => {
     })
 })
 
-module.exports = routes;
+export default routes;

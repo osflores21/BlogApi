@@ -8,7 +8,8 @@
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "type":"module",
+  "author": "Oswaldo Flores Morales",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
