@@ -2,18 +2,18 @@ const express  = require('express');
 const mysql = require('mysql2');
 const mycon = require('express-myconnection');
 const routes = require("./routes")
+const config = require("./config")
 const cors = require("cors");
 const app = express();
 app.disable('x-powered-by')
 app.use(cors());
-app.set('port', process.env.PORT || 8000);
 
 const dbOption = {
-    host: 'localhost',
-    port: 3306,
-    user: 'root',
-    password: 'root',
-    database: 'Blog'
+    host: config.DB_HOST,
+    port: config.DB_PORT,
+    user: config.DB_USER,
+    password: config.DB_PASSWORD,
+    database: config.DB_NAME
 }
 //Middlewares
 
@@ -31,5 +31,5 @@ app.use((request,response) => {
 
 //server running
 app.listen(app.get('port'), () =>{
-    console.log("server running on port", app.get('port'));
+    console.log("server running on port", config.DB_PORT );
 })
