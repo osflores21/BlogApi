@@ -6,7 +6,7 @@ routes.get('/', (request, response) => {
     request.getConnection((err, conn) =>{
         if(err) return response.send(err);
 
-        conn.query('select * from Entradas', (err,rows) =>{
+        conn.query('select * from Entries', (err,rows) =>{
             if(err) return response.send(err);
             response.json(rows);
         })
@@ -24,7 +24,7 @@ routes.get('/:filter', (request, response) => {
         if (!validFilters.includes(filter)) {
             return response.status(400).json({ error: 'Invalid filter provided' });
         }
-        conn.query( `select * from Entradas order by ${conn.escapeId(filter)} asc `, [request.params.filter], (err,rows) => {
+        conn.query( `select * from Entries order by ${conn.escapeId(filter)} asc `, [request.params.filter], (err,rows) => {
             if(err) return response.send(err);
             response.json(rows);
         })
@@ -36,7 +36,7 @@ routes.post('/', (request, response) => {
     request.getConnection((err, conn) =>{
         if(err) return response.send(err);
 
-        conn.query('insert into Entradas set ?', [request.body] , (err,rows) =>{
+        conn.query('insert into Entries set ?', [request.body] , (err,rows) =>{
             if(err) return response.send(err);
             response.json(rows);
         })
@@ -48,7 +48,7 @@ routes.delete('/:id', (request, response) => {
     request.getConnection((err, conn) =>{
         if(err) return response.send(err);
 
-        conn.query('delete from Entradas where id = ?', [request.params.id] , (err) =>{
+        conn.query('delete from Entries where id = ?', [request.params.id] , (err) =>{
             if(err) return response.send(err);
             response.send("Deleted");
         })
@@ -60,7 +60,7 @@ routes.put('/:id', (request, response) => {
     request.getConnection((err, conn) =>{
         if(err) return response.send(err);
 
-        conn.query('update Entradas set ? where id = ?', [request.body, request.params.id] , (err) =>{
+        conn.query('update Entries set ? where id = ?', [request.body, request.params.id] , (err) =>{
             if(err) return response.send(err);
             response.send("updated");
         })
