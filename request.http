@@ -3,7 +3,7 @@ GET https://blogapi-production-9469.up.railway.app/api/ HTTP/1.1
 
 ###
 
-GET http://localhost:8000/api/search/Test 6 HTTP/1.1
+GET http://localhost:8000/api/ HTTP/1.1
 
 
 ###

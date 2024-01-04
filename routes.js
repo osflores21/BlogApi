@@ -13,7 +13,7 @@ routes.get('/', (request, response) => {
     })
 })
 
-/* //Filter for title, autor or content
+/* //Filter for title, autor or content and order by desc/asc
 routes.get('/:filter', (request, response) => {
     request.getConnection((err, conn) =>{
         if(err) return response.send(err);
@@ -30,6 +30,7 @@ routes.get('/:filter', (request, response) => {
         })
     })
 }) */
+// search by autor, content or title %search% 
 routes.get('/:search', (request, response) => {
     request.getConnection((err, conn) =>{
         if(err) return response.send(err);
