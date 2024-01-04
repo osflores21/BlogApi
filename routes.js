@@ -30,6 +30,22 @@ routes.get('/:filter', (request, response) => {
         })
     })
 })
+routes.get('/', (request, response) => {
+    request.getConnection((err, conn) =>{
+        if(err) return response.send(err);
+
+        const searchTerm = request.query.searchTerm;
+
+        conn.query(
+            `SELECT * FROM Entries 
+            WHERE autor LIKE '%${searchTerm}%' OR contenido LIKE '%${searchTerm}%' OR titulo LIKE '%${searchTerm}%'`,
+            (err, rows) =>{
+                if(err) return response.send(err);
+                response.json(rows);
+            }
+        );
+    });
+});
 
 // Add new post
 routes.post('/', (request, response) => {
