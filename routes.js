@@ -24,7 +24,7 @@ routes.get('/:filter', (request, response) => {
         if (!validFilters.includes(filter)) {
             return response.status(400).json({ error: 'Invalid filter provided' });
         }
-        conn.query( `select * from Entries order by ${conn.escapeId(filter)} asc `, [request.params.filter], (err,rows) => {
+        conn.query( `select * from Entries order by ${conn.escapeId(filter)} desc `, [request.params.filter], (err,rows) => {
             if(err) return response.send(err);
             response.json(rows);
         })
@@ -34,11 +34,11 @@ routes.get('/:search', (request, response) => {
     request.getConnection((err, conn) =>{
         if(err) return response.send(err);
 
-        const searchTerm = request.query.searchTerm;
-
+        const { search } = request.params;
+console.log("search",request.params)
         conn.query(
             `SELECT * FROM Entries 
-            WHERE autor LIKE '%${searchTerm}%' OR content LIKE '%${searchTerm}%' OR title LIKE '%${searchTerm}%'`,
+            WHERE autor LIKE '%${search}%' OR content LIKE '%${search}%' OR title LIKE '%${search}%'`,
             (err, rows) =>{
                 if(err) return response.send(err);
                 response.json(rows);
