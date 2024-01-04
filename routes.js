@@ -38,7 +38,7 @@ routes.get('/:search', (request, response) => {
 
         conn.query(
             `SELECT * FROM Entries 
-            WHERE autor LIKE '%${searchTerm}%' OR contenido LIKE '%${searchTerm}%' OR titulo LIKE '%${searchTerm}%'`,
+            WHERE autor LIKE '%${searchTerm}%' OR content LIKE '%${searchTerm}%' OR title LIKE '%${searchTerm}%'`,
             (err, rows) =>{
                 if(err) return response.send(err);
                 response.json(rows);
