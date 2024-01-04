@@ -30,7 +30,7 @@ routes.get('/:filter', (request, response) => {
         })
     })
 })
-routes.get('/', (request, response) => {
+routes.get('/search', (request, response) => {
     request.getConnection((err, conn) =>{
         if(err) return response.send(err);
 

@@ -1,5 +1,5 @@
 ###
-GET https://blogapi-production-9469.up.railway.app/api/ HTTP/1.1
+GET https://blogapi-production-9469.up.railway.app/api?searchTerm=test HTTP/1.1
 
 ###
 
