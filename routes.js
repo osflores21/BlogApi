@@ -13,7 +13,7 @@ routes.get('/', (request, response) => {
     })
 })
 
-//Filter for title, autor or content
+/* //Filter for title, autor or content
 routes.get('/:filter', (request, response) => {
     request.getConnection((err, conn) =>{
         if(err) return response.send(err);
@@ -29,8 +29,8 @@ routes.get('/:filter', (request, response) => {
             response.json(rows);
         })
     })
-})
-routes.get('/search', (request, response) => {
+}) */
+routes.get('/:search', (request, response) => {
     request.getConnection((err, conn) =>{
         if(err) return response.send(err);
 
