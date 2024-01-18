@@ -47,7 +47,7 @@ console.log("search",request.params)
         );
     });
 });
-routes.get('/:id', (request, response) => {
+routes.get('/entrie/:id', (request, response) => {
     request.getConnection((err, conn) =>{
         if(err) return response.send(err);
 
