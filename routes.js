@@ -47,11 +47,11 @@ console.log("search",request.params)
         );
     });
 });
-routes.get('/id', (request, response) => {
+routes.get('/:id', (request, response) => {
     request.getConnection((err, conn) =>{
         if(err) return response.send(err);
 
-        conn.query('select * from Entries WHERE id = ', [request.params.id]  ,(err,rows) =>{
+        conn.query('select * from Entries WHERE id = ?', [request.params.id]  ,(err,rows) =>{
             if(err) return response.send(err);
             response.json(rows);
         })
