@@ -6,7 +6,7 @@ routes.get('/', (request, response) => {
     request.getConnection((err, conn) =>{
         if(err) return response.send(err);
 
-        conn.query('select * from Entries', (err,rows) =>{
+        conn.query('select * from Entries order by dateCreate asc', (err,rows) =>{
             if(err) return response.send(err);
             response.json(rows);
         })
